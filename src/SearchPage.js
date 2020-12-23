@@ -15,8 +15,8 @@ import { More } from "@material-ui/icons";
 
 function SearchPage() {
   const [{ term }, dispatch] = useStateValue();
-  //const { data } = useGoogleSearch(term);
-  const data = Response;
+  const { data } = useGoogleSearch(term);
+  //const data = Response;
   console.log(data);
 
   return (
@@ -70,7 +70,32 @@ function SearchPage() {
           </div>
         </div>
       </div>
-      {term && <div className="searchPage_results"></div>}
+      {term && (
+        <div className="searchPage_results">
+          <p className="searchPage_resultCount">
+            about {data?.searchInformation.totalResults} results in (
+            {data?.searchInformation.searchTime} seconds) for{" "}
+            {data?.queries.nextPage[0].searchTerms}
+          </p>
+
+          {data?.items.map((item) => (
+            <div className="searchPage_result">
+              <a href={item.link} target="_blank" rel="noreferrer">
+                {item.displayLink}
+              </a>
+              <a
+                className="searchPage_resultTitle"
+                href={item.link}
+                target="_blank"
+                rel="noreferrer"
+              >
+                <h2>{item.title}</h2>
+              </a>
+              <p className="searchPage_resultSnippet">{item.snippet}</p>
+            </div>
+          ))}
+        </div>
+      )}
     </div>
   );
 }
