@@ -70,7 +70,7 @@ function SearchPage() {
           </div>
         </div>
       </div>
-      <div className="searchPage_results"></div>
+      {term && <div className="searchPage_results"></div>}
     </div>
   );
 }
