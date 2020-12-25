@@ -12,6 +12,7 @@ import LocalOfferIcon from "@material-ui/icons/LocalOffer";
 import RoomIcon from "@material-ui/icons/Room";
 import MoreVertIcon from "@material-ui/icons/MoreVert";
 import { More } from "@material-ui/icons";
+import Grid from "@material-ui/core/Grid";
 
 function SearchPage() {
   const [{ term }, dispatch] = useStateValue();
@@ -79,20 +80,24 @@ function SearchPage() {
           </p>
 
           {data?.items.map((item) => (
-            <div className="searchPage_result">
-              <a href={item.link} target="_blank" rel="noreferrer">
-                {item.displayLink}
-              </a>
-              <a
-                className="searchPage_resultTitle"
-                href={item.link}
-                target="_blank"
-                rel="noreferrer"
-              >
-                <h2>{item.title}</h2>
-              </a>
-              <p className="searchPage_resultSnippet">{item.snippet}</p>
-            </div>
+            <Grid container spacing={3}>
+              <Grid item xs={12}>
+                <div className="searchPage_result">
+                  <a href={item.link} target="_blank" rel="noreferrer">
+                    {item.displayLink}
+                  </a>
+                  <a
+                    className="searchPage_resultTitle"
+                    href={item.link}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    <h2>{item.title}</h2>
+                  </a>
+                  <p className="searchPage_resultSnippet">{item.snippet}</p>
+                </div>
+              </Grid>
+            </Grid>
           ))}
         </div>
       )}
