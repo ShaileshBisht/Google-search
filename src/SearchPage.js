@@ -22,55 +22,27 @@ function SearchPage() {
 
   return (
     <div className="searchPage">
-      <div className="searchPage_header">
-        <Link to="/">
-          <img
-            className="searchPage_logo"
-            alt=""
-            src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Google_2015_logo.svg/368px-Google_2015_logo.svg.png"
-          />
-        </Link>
-        <div className="searchPage_headerBody">
+      <Grid
+        className="searchPage_header"
+        container
+        justify="center"
+        alignItems="center"
+        spacing={1}
+      >
+        <Grid item sm={false} md={4}>
+          <Link to="/">
+            <img
+              className="searchPage_logo"
+              alt=""
+              src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Google_2015_logo.svg/368px-Google_2015_logo.svg.png"
+            />
+          </Link>
+        </Grid>
+        <Grid item md={8}>
           <Search hideButtons />
+        </Grid>
+      </Grid>
 
-          <div className="searchPage_options">
-            <div className="searchPage_optionsLeft">
-              <div className="searchPage_option">
-                <SearchIcon />
-                <Link to="/all">All</Link>
-              </div>
-              <div className="searchPage_option">
-                <DescriptionIcon />
-                <Link to="/all">News</Link>
-              </div>
-              <div className="searchPage_option">
-                <ImageIcon />
-                <Link to="/all">Images</Link>
-              </div>
-              <div className="searchPage_option">
-                <LocalOfferIcon />
-                <Link to="/all">Shopping</Link>
-              </div>
-              <div className="searchPage_option">
-                <RoomIcon />
-                <Link to="/all">maps</Link>
-              </div>
-              <div className="searchPage_option">
-                <MoreVertIcon />
-                <Link to="/all">More</Link>
-              </div>
-            </div>
-            <div className="searchPage_optionsRight">
-              <div className="searchPage_option">
-                <Link to="/setting">Setting</Link>
-              </div>
-              <div className="searchPage_option">
-                <Link to="/tools">Tools</Link>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
       {term && (
         <div className="searchPage_results">
           <p className="searchPage_resultCount">
@@ -80,7 +52,7 @@ function SearchPage() {
           </p>
 
           {data?.items.map((item) => (
-            <Grid container spacing={3}>
+            <Grid container spacing={0}>
               <Grid item xs={12}>
                 <div className="searchPage_result">
                   <a href={item.link} target="_blank" rel="noreferrer">
